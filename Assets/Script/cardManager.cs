@@ -5,29 +5,12 @@ using UnityEngine.UI;
 
 public class cardManager : MonoBehaviour {
 
+    public string[] orderList;
+
     public static cardManager instance;
     private Sprite card1, card2, card3, card4;
 
-    public Sprite cardSprite1;
-    public Sprite cardSprite2;
-    public Sprite cardSprite3;
-    public Sprite cardSprite4;
-    public Sprite cardSprite5;
-    public Sprite cardSprite6;
-    public Sprite cardSprite7;
-    public Sprite cardSprite8;
-    public Sprite cardSprite9;
-    public Sprite cardSprite10;
-    public Sprite cardSprite11;
-    public Sprite cardSprite12;
-    public Sprite cardSprite13;
-    public Sprite cardSprite14;
-    public Sprite cardSprite15;
-    public Sprite cardSprite16;
-    public Sprite cardSprite17;
-    public Sprite cardSprite18;
-    public Sprite cardSprite19;
-    public Sprite cardSprite20;
+    public Sprite[] cardSprites;
 
     public Sprite emptySprite;
 
@@ -94,76 +77,9 @@ public class cardManager : MonoBehaviour {
         if (card4.Equals(emptySprite))
         {
             Sprite c;
-            int ccode;
             do
             {
-                ccode = Random.Range(1, 21);
-                switch (ccode)
-                {
-                    case 1:
-                        c = cardSprite1;
-                        break;
-                    case 2:
-                        c = cardSprite2;
-                        break;
-                    case 3:
-                        c = cardSprite3;
-                        break;
-                    case 4:
-                        c = cardSprite4;
-                        break;
-                    case 5:
-                        c = cardSprite5;
-                        break;
-                    case 6:
-                        c = cardSprite6;
-                        break;
-                    case 7:
-                        c = cardSprite7;
-                        break;
-                    case 8:
-                        c = cardSprite8;
-                        break;
-                    case 9:
-                        c = cardSprite9;
-                        break;
-                    case 10:
-                        c = cardSprite10;
-                        break;
-                    case 11:
-                        c = cardSprite11;
-                        break;
-                    case 12:
-                        c = cardSprite12;
-                        break;
-                    case 13:
-                        c = cardSprite13;
-                        break;
-                    case 14:
-                        c = cardSprite14;
-                        break;
-                    case 15:
-                        c = cardSprite15;
-                        break;
-                    case 16:
-                        c = cardSprite16;
-                        break;
-                    case 17:
-                        c = cardSprite17;
-                        break;
-                    case 18:
-                        c = cardSprite18;
-                        break;
-                    case 19:
-                        c = cardSprite19;
-                        break;
-                    case 20:
-                        c = cardSprite20;
-                        break;
-                    default:
-                        c = emptySprite;
-                        break;
-                }
+                c = cardSprites[Random.Range(1, 21) - 1];
 
                 if (card1.Equals(emptySprite))
                 {
@@ -381,48 +297,16 @@ public class cardManager : MonoBehaviour {
     public int GetCardCodeInSlot(int slotIndex)
     {
         Sprite targetSlot = getTargetCardInSlot(slotIndex);
-        if (targetSlot.Equals(cardSprite1))
-            return 1;
-        else if (targetSlot.Equals(cardSprite2))
-            return 2;
-        else if (targetSlot.Equals(cardSprite3))
-            return 3;
-        else if (targetSlot.Equals(cardSprite4))
-            return 4;
-        else if (targetSlot.Equals(cardSprite5))
-            return 5;
-        else if (targetSlot.Equals(cardSprite6))
-            return 6;
-        else if (targetSlot.Equals(cardSprite7))
-            return 7;
-        else if (targetSlot.Equals(cardSprite8))
-            return 8;
-        else if (targetSlot.Equals(cardSprite9))
-            return 9;
-        else if (targetSlot.Equals(cardSprite10))
-            return 10;
-        else if (targetSlot.Equals(cardSprite11))
-            return 11;
-        else if (targetSlot.Equals(cardSprite12))
-            return 12;
-        else if (targetSlot.Equals(cardSprite13))
-            return 13;
-        else if (targetSlot.Equals(cardSprite14))
-            return 14;
-        else if (targetSlot.Equals(cardSprite15))
-            return 15;
-        else if (targetSlot.Equals(cardSprite16))
-            return 16;
-        else if (targetSlot.Equals(cardSprite17))
-            return 17;
-        else if (targetSlot.Equals(cardSprite18))
-            return 18;
-        else if (targetSlot.Equals(cardSprite19))
-            return 19;
-        else if (targetSlot.Equals(cardSprite20))
-            return 20;
-        else
-            return -1;
+
+        for (int i = 1; i < cardSprites.Length + 1; i++)
+        {
+            if (targetSlot.Equals(cardSprites[i]))
+            {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     int[] GetSelectedCardIndexInArray(bool[] selectedList)
