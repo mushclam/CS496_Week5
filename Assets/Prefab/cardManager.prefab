@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1928596409514418}
+  m_IsPrefabAsset: 1
+--- !u!1 &1928596409514418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224926121510189108}
+  - component: {fileID: 114005185919476162}
+  m_Layer: 5
+  m_Name: cardManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &114005185919476162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1928596409514418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614ee9025d0136541a801a2ea7af625e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardSprite1: {fileID: 21300000, guid: 7d86cbfc93c7afc40aa6c9a3ab48001e, type: 3}
+  cardSprite2: {fileID: 21300000, guid: 398b0b6c2fd2ffa4795dbc8e0b6a2669, type: 3}
+  cardSprite3: {fileID: 21300000, guid: eda04850244000c4dad7c4905dfa5b4a, type: 3}
+  cardSprite4: {fileID: 21300000, guid: f8c8df49f86283f4c8123a07127ab6a3, type: 3}
+  cardSprite5: {fileID: 21300000, guid: 4b9cfa04cb27e234e9adc71ddf283c48, type: 3}
+  cardSprite6: {fileID: 21300000, guid: f753ced5227c22c47b462182205a3b5d, type: 3}
+  cardSprite7: {fileID: 21300000, guid: 63fbbd6b2895eda46b2d6f4c1febdabe, type: 3}
+  cardSprite8: {fileID: 21300000, guid: 3f2b57985017c3044832d215892afe81, type: 3}
+  cardSprite9: {fileID: 21300000, guid: 286bd10ff77e5104796353344332b945, type: 3}
+  cardSprite10: {fileID: 21300000, guid: 25c637a47e1b05c4fa299a141e00b578, type: 3}
+  cardSprite11: {fileID: 21300000, guid: 97364f86c97edf94593915504536a84b, type: 3}
+  cardSprite12: {fileID: 21300000, guid: 1e38adf3b57301e4b9fa5ceff61dd19d, type: 3}
+  cardSprite13: {fileID: 21300000, guid: d15a21390f49fb142b9fc3ab2c398cd8, type: 3}
+  cardSprite14: {fileID: 21300000, guid: e0a0ab893d6efdb45911a161755ba7a4, type: 3}
+  cardSprite15: {fileID: 21300000, guid: aa2f3a75e5c9be44998c1a123f8a4040, type: 3}
+  cardSprite16: {fileID: 21300000, guid: 184f9692e843806419d8bd9f46ef02d3, type: 3}
+  cardSprite17: {fileID: 21300000, guid: 2f1511e598e0b334594ad370ec6dcc0a, type: 3}
+  cardSprite18: {fileID: 21300000, guid: 145928f10fadb2e4c894453f18d36891, type: 3}
+  cardSprite19: {fileID: 21300000, guid: 469d5071c2b1f5c4db4e72d377251f38, type: 3}
+  cardSprite20: {fileID: 21300000, guid: 7163b81b249f825468994c1d27da9c6c, type: 3}
+  emptySprite: {fileID: 21300000, guid: 687aad5361743eb409f5c3f56d37cd9f, type: 3}
+  slot1: {fileID: 0}
+  slot2: {fileID: 0}
+  slot3: {fileID: 0}
+  slot4: {fileID: 0}
+  geneaology: {fileID: 0}
+--- !u!224 &224926121510189108
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1928596409514418}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}

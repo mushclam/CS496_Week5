@@ -1,0 +1,14 @@
+.vs/
+Builds/
+Library/
+obj/
+Packages/
+ProjectSettings/
+Temp/
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp-Editor-firstpass.csproj
+Android Test.sln
+Android Test.csproj
+Android Test.Editor.csproj
+Assembly-CSharp.csproj
+Assembly-CSharp-firstpass.csproj
