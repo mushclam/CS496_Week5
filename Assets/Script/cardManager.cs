@@ -298,7 +298,7 @@ public class cardManager : MonoBehaviour {
     {
         Sprite targetSlot = getTargetCardInSlot(slotIndex);
 
-        for (int i = 1; i < cardSprites.Length + 1; i++)
+        for (int i = 0; i < cardSprites.Length; i++)
         {
             if (targetSlot.Equals(cardSprites[i]))
             {

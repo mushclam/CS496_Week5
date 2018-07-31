@@ -11,40 +11,6 @@ public class UnitManager : MonoBehaviour
     [SerializeField] public Sprite[] unitSprites;
     private Dictionary<string, int> orderDic;
 
-    public Sprite unitSprite1;      // 38
-    public Sprite unitSprite2;      // 13
-    public Sprite unitSprite2_2;    // 18
-    public Sprite unitSprite3;      // 장
-    public Sprite unitSprite4;      // 9
-    public Sprite unitSprite5;      // 8
-    public Sprite unitSprite6;      // 7
-    public Sprite unitSprite7;      // 6
-    public Sprite unitSprite8;      // 5
-    public Sprite unitSprite9;      // 4
-    public Sprite unitSprite10;      // 3
-    public Sprite unitSprite11;      // 2
-    public Sprite unitSprite12;      // 1
-    public Sprite unitSprite13;      // 알리
-    public Sprite unitSprite14;      // 독사
-    public Sprite unitSprite15;      // 구삥
-    public Sprite unitSprite16;      // 장삥
-    public Sprite unitSprite17;      // 장사
-    public Sprite unitSprite18;      // 세륙
-    public Sprite unitSprite19;      // 갑오
-    public Sprite unitSprite20;      // 여덟끗
-    public Sprite unitSprite21;      // 일곱끗
-    public Sprite unitSprite22;      // 여섯끗
-    public Sprite unitSprite23;      // 다섯끗
-    public Sprite unitSprite24;      // 네끗
-    public Sprite unitSprite25;      // 세끗
-    public Sprite unitSprite26;      // 두끗
-    public Sprite unitSprite27;      // 한끗
-    public Sprite unitSprite28;      // 망통
-    public Sprite unitSprite29;      // 땡잡이
-    public Sprite unitSprite30;      // 암행어사
-    public Sprite unitSprite31;      // 구사
-    public Sprite unitSprite32;      // 멍텅구리 구사
-
     public Sprite emptySprite;
 
     public Image slot1, slot2, slot3, slot4, slot5;

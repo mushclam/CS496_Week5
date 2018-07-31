@@ -1673,6 +1673,16 @@ Prefab:
       propertyPath: m_InterpolateMovement
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114803969603145900, guid: 3c6b391a9c8ffc24d9d67f259cdf9883,
+        type: 2}
+      propertyPath: m_LocalPlayerAuthority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114803969603145900, guid: 3c6b391a9c8ffc24d9d67f259cdf9883,
+        type: 2}
+      propertyPath: m_ServerOnly
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
   m_IsPrefabAsset: 0
@@ -2982,7 +2992,7 @@ GameObject:
   - component: {fileID: 1786984070}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

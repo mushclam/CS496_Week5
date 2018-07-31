@@ -11,7 +11,7 @@ public class UnitRsc1 : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         tap = eventData.clickCount;
-        if(tap == 2)
+        if(tap == 1)
         {
             UnitManager.instance.SelectUnit(slotindex);
         }

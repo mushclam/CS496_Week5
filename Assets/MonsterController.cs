@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
+
 public class MonsterController : MonoBehaviour {
 
-    public Camera cam;
-    public NavMeshAgent agent;
-
+    private NavMeshAgent agent;
+    private GameObject owner;
     private GameObject target;
     private float distanceToTarget;
 
