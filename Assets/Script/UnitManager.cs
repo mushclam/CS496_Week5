@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class UnitManager : MonoBehaviour
+public class UnitManager : NetworkBehaviour
 {
     public static UnitManager instance;
     public Sprite unit1, unit2, unit3, unit4, unit5;
@@ -14,6 +15,8 @@ public class UnitManager : MonoBehaviour
     public Sprite emptySprite;
 
     public Image slot1, slot2, slot3, slot4, slot5;
+
+    private GameObject parent;
 
     void Awake()
     {
@@ -56,6 +59,8 @@ public class UnitManager : MonoBehaviour
             { "구사", 32 },
             { "멍텅구리 구사", 33 }
         };
+
+        parent = GetComponentInParent<Player>().gameObject;
     }
 
     public void AddUnit(string gen)
@@ -80,20 +85,14 @@ public class UnitManager : MonoBehaviour
         ShowUnitList();
     }
 
+    
     public void SelectUnit(int slotindex)
     {
-        Sprite targetUnit = GetTargetUnitInSlot(slotindex);
-        if(!targetUnit.Equals(emptySprite))
-        {
-            int unitcode = GetUnitCode(targetUnit);
-            //Summoner.instance.SummonUnit(unitcode);
-            //sort & destroy
-            DestroyAndSortUnitList(slotindex);
-            ShowUnitList();
-        }
+        DestroyAndSortUnitList(slotindex);
+        ShowUnitList();
     }
 
-    int GetUnitCode(Sprite targetUnit)
+    public int GetUnitCode(Sprite targetUnit)
     {
         for (int i = 0; i < unitSprites.Length; i++)
         {

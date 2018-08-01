@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class cardManager : MonoBehaviour {
+public class cardManager : NetworkBehaviour {
 
     public string[] orderList;
 
@@ -16,6 +17,8 @@ public class cardManager : MonoBehaviour {
 
     public Image slot1, slot2, slot3, slot4;
     public Text geneaology;
+
+    private UnitManager m_unitManager;
     bool[] selectedList = new bool[4];
 
 
@@ -23,6 +26,7 @@ public class cardManager : MonoBehaviour {
     {
         if (!instance)
             instance = this;
+        m_unitManager = GetComponent<UnitManager>();
     }
 
     public void Start()
@@ -54,7 +58,7 @@ public class cardManager : MonoBehaviour {
                 string gen = GetGenealogy(GetCardCodeInSlot(idx1), GetCardCodeInSlot(idx2));
 
                 ShowGenealogy(gen);
-                UnitManager.instance.AddUnit(gen);
+                m_unitManager.AddUnit(gen);
 
                 selectedList[idx1] = false;
                 selectedList[idx2] = false;
@@ -64,7 +68,6 @@ public class cardManager : MonoBehaviour {
                 ShowCardList();
             }
         }
-
     }
     
     public void ShowGenealogy(string gen)
@@ -302,7 +305,7 @@ public class cardManager : MonoBehaviour {
         {
             if (targetSlot.Equals(cardSprites[i]))
             {
-                return i;
+                return i+1;
             }
         }
 

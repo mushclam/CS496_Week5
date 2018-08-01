@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class UnitHealth : NetworkBehaviour {
 
     public int maxHealth = 100;
-    [SyncVar] private int currentHealth;
+    [SyncVar] public int currentHealth;
 
 	void Start () {
         currentHealth = maxHealth;

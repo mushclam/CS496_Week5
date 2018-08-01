@@ -492,6 +492,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: ToggleEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   maxHealth: 100
+  DestroySound: {fileID: 1179935554089506, guid: d2d8e8a1892fa5d44b4dff2c032aa8b6,
+    type: 2}
 --- !u!114 &114720224761699066
 MonoBehaviour:
   m_ObjectHideFlags: 1

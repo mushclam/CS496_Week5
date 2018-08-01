@@ -21,12 +21,13 @@ public class Summoner : NetworkBehaviour {
 
     }
 
-    public void SummonUnit(NetworkConnection conn, Vector3 summonPosition, int unitCode)
+    public void SummonUnit(NetworkConnection conn, Vector3 summonPosition, Vector3 rotation, int unitCode)
     {
         summonedMonster = Instantiate(
             MonsterList[unitCode],
             summonPosition,
             Quaternion.identity);
+        summonedMonster.transform.Rotate(rotation);
 
         NetworkServer.SpawnWithClientAuthority(summonedMonster, conn);
     }

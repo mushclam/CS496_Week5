@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
@@ -19,17 +17,28 @@ public class Player : NetworkBehaviour {
     GameObject mainCamera;
     Camera playerCamera;
 
+    private NetworkConnection m_Identity;
+    private UnitManager unitManager;
+    private cardManager m_cardManager;
+    private Summoner summoner;
+
     private void Start()
     {
         //mainCamera = Camera.main.gameObject;
         playerCamera = GetComponentInChildren<Camera>();
-
-        EnablePlayer();
+        
+        if (isLocalPlayer)
+        {
+            EnablePlayer();
+        }
     }
 
     public override void OnStartLocalPlayer()
     {
         CmdSpawnNexus();
+        summoner = GetComponentInChildren<Summoner>();
+        unitManager = GetComponent<UnitManager>();
+        m_cardManager = GetComponent<cardManager>();
     }
 
     private void Update()
@@ -38,7 +47,8 @@ public class Player : NetworkBehaviour {
         {
             if (Input.GetMouseButtonDown(0))
             {
-                CmdMouseSummon();
+                //Debug.Log(connectionToServer);
+                //CmdMouseSummon(0);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -91,32 +101,53 @@ public class Player : NetworkBehaviour {
             nexusPosition,
             Quaternion.identity);
 
-        Debug.Log(connectionToClient);
         NetworkServer.SpawnWithClientAuthority(playerNexus, connectionToClient);
     }
 
     [Command]
-    private void CmdMouseSummon()
+    public void CmdMouseSummon(int slotIndex, int unitcode)
     {
         Vector3 spawnPosition;
+        Vector3 rot;
 
         startPositions = GameObject.FindGameObjectsWithTag("StartPosition");
-        if (transform.position.Equals(startPositions[0].transform.position))
+        if (GetComponentInParent<Player>().transform.position.Equals(
+            startPositions[0].transform.position))
         {
             spawnPosition = startPositions[0].transform.GetChild(1).position;
+            rot = new Vector3(0, 180, 0);
         }
         else
         {
             spawnPosition = startPositions[1].transform.GetChild(1).position;
+            rot = Vector3.zero;
         }
 
-        //Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-        //RaycastHit hit;
-        //Physics.Raycast(ray, out hit)
+        Summoner.instance.SummonUnit(connectionToClient, spawnPosition, rot, unitcode);
+        RpcDestroy(slotIndex);
+    }
 
-        if (spawnPosition != null)
-        {
-            Summoner.instance.SummonUnit(connectionToClient, spawnPosition, 0);
-        }
+    [Command]
+    public void CmdSetCard(int cardIndex)
+    {
+        RpcTest(cardIndex);
+    }
+
+    [ClientRpc]
+    public void RpcStatus(string status)
+    {
+        Debug.Log(status);
+    }
+
+    [ClientRpc]
+    public void RpcTest(int cardIndex)
+    {
+        m_cardManager.SelectCard(cardIndex);
+    }
+
+    [ClientRpc]
+    public void RpcDestroy(int slotIndex)
+    {
+        unitManager.SelectUnit(slotIndex);
     }
 }

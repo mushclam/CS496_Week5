@@ -14,6 +14,8 @@ public class NexusStatus : NetworkBehaviour {
     private GameObject player;
     private NetworkIdentity m_identity;
 
+    public GameObject DestroySound;
+
 	// Use this for initialization
 	void Start () {
         m_identity = GetComponent<NetworkIdentity>();
@@ -30,6 +32,7 @@ public class NexusStatus : NetworkBehaviour {
     public void CmdTakeDamage (int damage)
     {
         currentHealth -= damage;
+        Debug.Log("Health: " + currentHealth);
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -41,6 +44,7 @@ public class NexusStatus : NetworkBehaviour {
     void RpcNexusDestroy()
     {
         onToggleEffect.Invoke(true);
+        Instantiate(DestroySound);
         GetComponentInChildren<MeshRenderer>().material.SetColor(0, Color.black);
     }
 
