@@ -8,7 +8,6 @@ public class Summoner : NetworkBehaviour {
 
     [SerializeField] GameObject[] MonsterList;
 
-    public Vector3 summonPosition;
     private GameObject summonedMonster;
 
     void Awake()
@@ -19,18 +18,16 @@ public class Summoner : NetworkBehaviour {
 
     private void Start()
     {
-        summonPosition = Vector3.zero;
+
     }
 
-    public void SummonUnit(int unitCode)
+    public void SummonUnit(NetworkConnection conn, Vector3 summonPosition, int unitCode)
     {
-        CmdSummonInit(MonsterList[unitCode]);
-    }
+        summonedMonster = Instantiate(
+            MonsterList[unitCode],
+            summonPosition,
+            Quaternion.identity);
 
-    [Command]
-    private void CmdSummonInit(GameObject monster)
-    {
-        summonedMonster = Instantiate(monster, summonPosition, Quaternion.identity);
-        NetworkServer.Spawn(summonedMonster);
+        NetworkServer.SpawnWithClientAuthority(summonedMonster, conn);
     }
 }

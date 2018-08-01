@@ -619,6 +619,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: ToggleEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  startPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  nexusPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  nexus: {fileID: 1420445608403260, guid: 29f7f61bb6eda944690d8c2eac151ab4, type: 2}
 --- !u!114 &114165116093238298
 MonoBehaviour:
   m_ObjectHideFlags: 1

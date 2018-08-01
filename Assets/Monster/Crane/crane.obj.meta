@@ -11,6 +11,7 @@ ModelImporter:
     2300000: crane
     3300000: crane
     4300000: crane
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -70,7 +71,7 @@ ModelImporter:
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
-  copyAvatar: 1
+  copyAvatar: 0
   humanDescription:
     serializedVersion: 2
     human: []
@@ -87,8 +88,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 2c5a1bfbb7169a741ae70b63d6d215ae,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1
   additionalBone: 0

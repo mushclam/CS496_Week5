@@ -86,7 +86,7 @@ public class UnitManager : MonoBehaviour
         if(!targetUnit.Equals(emptySprite))
         {
             int unitcode = GetUnitCode(targetUnit);
-            Summoner.instance.SummonUnit(unitcode);
+            //Summoner.instance.SummonUnit(unitcode);
             //sort & destroy
             DestroyAndSortUnitList(slotindex);
             ShowUnitList();
