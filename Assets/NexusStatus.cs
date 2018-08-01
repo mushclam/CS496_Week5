@@ -26,17 +26,19 @@ public class NexusStatus : NetworkBehaviour {
 		
 	}
 
-    public void TakeDamage (int damage)
+    [Command]
+    public void CmdTakeDamage (int damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            NexusDestroy();
+            RpcNexusDestroy();
         }
     }
 
-    void NexusDestroy()
+    [ClientRpc]
+    void RpcNexusDestroy()
     {
         onToggleEffect.Invoke(true);
         GetComponentInChildren<MeshRenderer>().material.SetColor(0, Color.black);

@@ -15,14 +15,13 @@ public class Player : NetworkBehaviour {
 
     [SerializeField] GameObject nexus;
     private GameObject[] startPositions;
-    private GameObject[] nexusPositions;
     
     GameObject mainCamera;
     Camera playerCamera;
 
     private void Start()
     {
-        mainCamera = Camera.main.gameObject;
+        //mainCamera = Camera.main.gameObject;
         playerCamera = GetComponentInChildren<Camera>();
 
         EnablePlayer();
@@ -39,13 +38,7 @@ public class Player : NetworkBehaviour {
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    Summoner.instance.SummonUnit(connectionToClient, hit.point, 0);
-                }
+                CmdMouseSummon();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -53,7 +46,7 @@ public class Player : NetworkBehaviour {
                 GameObject[] test = GameObject.FindGameObjectsWithTag("Unit");
                 foreach (GameObject unit in test)
                 {
-                    unit.GetComponent<UnitHealth>().TakeDamage(100);
+                    unit.GetComponent<UnitHealth>().CmdTakeDamage(100);
                 }
             }
         }
@@ -63,7 +56,7 @@ public class Player : NetworkBehaviour {
     {
         if (isLocalPlayer)
         {
-            mainCamera.SetActive(false);
+            //mainCamera.SetActive(false);
         }
 
         onToggleShared.Invoke(true);
@@ -98,6 +91,32 @@ public class Player : NetworkBehaviour {
             nexusPosition,
             Quaternion.identity);
 
+        Debug.Log(connectionToClient);
         NetworkServer.SpawnWithClientAuthority(playerNexus, connectionToClient);
+    }
+
+    [Command]
+    private void CmdMouseSummon()
+    {
+        Vector3 spawnPosition;
+
+        startPositions = GameObject.FindGameObjectsWithTag("StartPosition");
+        if (transform.position.Equals(startPositions[0].transform.position))
+        {
+            spawnPosition = startPositions[0].transform.GetChild(1).position;
+        }
+        else
+        {
+            spawnPosition = startPositions[1].transform.GetChild(1).position;
+        }
+
+        //Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit hit;
+        //Physics.Raycast(ray, out hit)
+
+        if (spawnPosition != null)
+        {
+            Summoner.instance.SummonUnit(connectionToClient, spawnPosition, 0);
+        }
     }
 }

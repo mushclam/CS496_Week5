@@ -9,9 +9,9 @@ using UnityEngine.Networking;
 public class MonsterController : NetworkBehaviour {
 
     private NavMeshAgent agent;
-    private NetworkIdentity m_Identity;
-    private GameObject target;
-    private float distanceToTarget;
+    [SyncVar] private NetworkIdentity m_Identity;
+    [SyncVar] private GameObject target;
+    [SyncVar] private float distanceToTarget;
 
     private Animator m_Animator;
     private float m_ForwardAmount;
@@ -34,23 +34,12 @@ public class MonsterController : NetworkBehaviour {
 
     private void Update()
     {
-        SearchTarget();
+        CmdSearchTarget();
         attackTimer += Time.deltaTime;
-
-        if (target != null)
-        {
-            m_ForwardAmount = agent.velocity.magnitude;
-            agent.SetDestination(target.transform.position);
-        }
 
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
-            if (attackTimer >= 2f)
-            {
-                attackTimer = 0;
-                StartCoroutine("AttackTarget");
-            }
-            
+            AttackTarget();
         }
         else
         {
@@ -58,7 +47,8 @@ public class MonsterController : NetworkBehaviour {
         }
     }
 
-    public void SearchTarget()
+    [Command]
+    public void CmdSearchTarget()
     {
         GameObject[] nexusList = GameObject.FindGameObjectsWithTag("Nexus");
         GameObject[] enemyList = GameObject.FindGameObjectsWithTag("Unit");
@@ -67,10 +57,10 @@ public class MonsterController : NetworkBehaviour {
 
         for (int i = 0; i < nexusList.Length; i++)
         {
-            //if (m_Identity.clientAuthorityOwner.Equals(nexusList[i].GetComponent<NexusStatus>().GetOwner()))
-            //{
-            //    continue;
-            //}
+            if (m_Identity.clientAuthorityOwner.Equals(nexusList[i].GetComponent<NexusStatus>().GetOwner()))
+            {
+                continue;
+            }
 
             float tempOffset = Vector3.Distance(this.transform.position, nexusList[i].transform.position);
             if (i == 0)
@@ -87,14 +77,30 @@ public class MonsterController : NetworkBehaviour {
                 }
             }
         }
+
+        RpcMoveAgent();
     }
 
-    private void MoveAgent()
+    [ClientRpc]
+    private void RpcMoveAgent()
     {
-        
+        if (target != null)
+        {
+            m_ForwardAmount = agent.velocity.magnitude;
+            agent.SetDestination(target.transform.position);
+        }
     }
 
-    IEnumerator AttackTarget()
+    private void AttackTarget()
+    {
+        if (attackTimer >= 2f)
+        {
+            attackTimer = 0;
+            StartCoroutine("AttackAnim");
+        }
+    }
+
+    IEnumerator AttackAnim()
     {
         m_Attack = true;
         UpdateAnimator();
@@ -109,7 +115,8 @@ public class MonsterController : NetworkBehaviour {
         UpdateAnimator();
     }
 
-    public void Die()
+    [ClientRpc]
+    public void RpcDie()
     {
         m_Animator.SetTrigger("Die");
         agent.isStopped = true;
@@ -121,11 +128,11 @@ public class MonsterController : NetworkBehaviour {
         Debug.Log("TriggerEnter");
         if (other.tag == "Unit")
         {
-            other.GetComponent<UnitHealth>().TakeDamage(m_Damage);
+            other.GetComponent<UnitHealth>().CmdTakeDamage(m_Damage);
         }
         else if (other.tag == "Nexus")
         {
-            other.GetComponent<NexusStatus>().TakeDamage(m_Damage);
+            other.GetComponent<NexusStatus>().CmdTakeDamage(m_Damage);
         }
     }
 

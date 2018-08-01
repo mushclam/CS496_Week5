@@ -16,13 +16,14 @@ public class UnitHealth : NetworkBehaviour {
 		
 	}
 
-    public void TakeDamage(int damage)
+    [Command]
+    public void CmdTakeDamage(int damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            gameObject.GetComponent<MonsterController>().Die();
+            gameObject.GetComponent<MonsterController>().RpcDie();
         }
     }
 }

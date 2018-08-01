@@ -40,14 +40,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MonsterList:
   - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
   - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
   - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
@@ -71,7 +63,14 @@ MonoBehaviour:
   - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
   - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
   - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
-  summonPosition: {x: 0, y: 0, z: 0}
+  - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
+  - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
+  - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
+  - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
+  - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
+  - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
+  - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
+  - {fileID: 1125991167376844, guid: 3c6b391a9c8ffc24d9d67f259cdf9883, type: 2}
 --- !u!224 &224488506819877390
 RectTransform:
   m_ObjectHideFlags: 1

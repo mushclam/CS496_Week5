@@ -17,7 +17,7 @@ public class MoonAttack : MonoBehaviour {
 
     private void Update()
     {
-        GetComponent<MonsterController>().SearchTarget();
+        GetComponent<MonsterController>().CmdSearchTarget();
         Vector3 offset = (target.transform.position - transform.position);
 
         burningPosition.Rotate(offset);
